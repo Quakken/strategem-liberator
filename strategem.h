@@ -12,7 +12,7 @@ class Strategem
 {
 private:
     const char * name; // The name of the strategem
-    const char * inputs; // The inputs that the strategem takes. Note that this value MUST end in a null char, or an infinite loop will occur during initialization
+    const char * inputs; // The inputs that the strategem takes. Note that it MUST end in a null char or 'END'
 public:
     Strategem(const char * name, const char * inputs);
     void print();

@@ -1,18 +1,21 @@
 #include <iostream> // input/output (getc, cout, etc.)
 #include <string> // std::string
+#include <cstring> // strlen
 #include <vector> // vectors
 #include <conio.h> // getch
+#include <windows.h> // chcp
 #include "strategem.h"
+#include "main.h"
 
 //----- Global Variables -----//
+const int SCREEN_WIDTH = 87;
 std::vector<Strategem> strategems;
-
-//----- Function Prototypes -----//
-void initialize_strategems();
-void print_title();
 
 //----- Main -----//
 int main(int argc, const char** argv) {
+    // Initialize the console
+    SetConsoleOutputCP(65001);
+
     // Initialize strategems
     initialize_strategems();
 
@@ -22,6 +25,7 @@ int main(int argc, const char** argv) {
     // Choose a random strategem
     Strategem * strat = &strategems[rand() % strategems.size()];
 
+    // Print it
     strat->print();
 
     // Main loop
@@ -60,8 +64,13 @@ void print_title(){
             << " ______      | |     | |  | ___ \\|  __| |    / |  _  | | |  | | | ||    /       ______ " << std::endl
             << "|______|     | |_____| |_ | |_/ /| |___ | |\\ \\ | | | | | |  \\ \\_/ /| |\\ \\      |______|" << std::endl
             << "             \\_____/\\___/ \\____/ \\____/ \\_| \\_|\\_| |_/ \\_/   \\___/ \\_| \\_|             " << std::endl
-            << std::endl
-            << "                            -- ported to c++ by Quakken --" << std::endl;
+            << std::endl;
+    center_text("by Quakken", SCREEN_WIDTH);
+    std::cout << std::endl;
 }
 
-
+// Prints the given text centered
+void center_text(const char * text, int fieldWidth) {
+    int padlen = (fieldWidth - strlen(text)) / 2;
+    printf("%*s%s%*s\n", padlen, "", text, padlen, "");
+} 
