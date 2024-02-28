@@ -16,4 +16,5 @@ private:
 public:
     Strategem(const char * name, const char * inputs);
     void print();
+    const char * get_inputs();
 };

@@ -36,5 +36,9 @@ void Strategem::print(){
     }
     formattedInputs.append(" }-");
 
-    center_text(formattedInputs.c_str(), SCREEN_WIDTH); // Print inputs
+    center_text(formattedInputs.c_str(), SCREEN_WIDTH, strlen("-{ ") * 2 + strlen(inputs) * 3); // Print inputs
+}
+
+const char * Strategem::get_inputs(){
+    return inputs;
 }
